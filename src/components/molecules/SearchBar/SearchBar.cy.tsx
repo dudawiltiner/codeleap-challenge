@@ -51,19 +51,20 @@ describe("SearchBar Component", () => {
         onDateFilterChange={mockOnDateFilterChange}
       />
     );
-    cy.get("input").type("test");
-    cy.get("button").click();
-    cy.get("@onSearch").should("have.been.calledWith", "test");
+    cy.get("input").type("test search");
+    cy.get("button").contains("Search").click();
+    cy.get("@onSearch").should("have.been.calledWith", "test search");
   });
 
-  it("calls onDateFilterChange when date filter changes", () => {
+  it("shows date filter when date filter button is clicked", () => {
     cy.mount(
       <SearchBar
         onSearch={mockOnSearch}
         onDateFilterChange={mockOnDateFilterChange}
       />
     );
-    cy.get("select").select("newest");
-    cy.get("@onDateFilterChange").should("have.been.calledWith", "newest");
+    cy.get("button").contains("Date Filter").click();
+    cy.get("div").contains("From Date").should("exist");
+    cy.get("div").contains("To Date").should("exist");
   });
 });

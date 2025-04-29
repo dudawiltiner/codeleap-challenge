@@ -1,19 +1,29 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/atoms/Button/Button"
-import { Input } from "@/components/atoms/Input/Input"
-import { FormField } from "@/components/molecules/FormField/FormField"
-import { useCreatePostForm } from "./CreatePostForm.hooks"
-import { Sparkles } from "lucide-react"
-import { MarkdownEditor } from "@/components/ui/markdown-editor"
+import { Button } from "@/components/atoms/Button/Button";
+import { Input } from "@/components/atoms/Input/Input";
+import { FormField } from "@/components/molecules/FormField/FormField";
+import { MarkdownEditor } from "@/components/ui/markdown-editor";
+import { Sparkles } from "lucide-react";
+import { useCreatePostForm } from "./CreatePostForm.hooks";
 
 export function CreatePostForm() {
-  const { title, setTitle, content, setContent, handleSubmit, handleGenerateContent, isFormValid, isGenerating } =
-    useCreatePostForm()
+  const {
+    title,
+    setTitle,
+    content,
+    setContent,
+    handleSubmit,
+    handleGenerateContent,
+    isFormValid,
+    isGenerating,
+  } = useCreatePostForm();
 
   return (
     <div className="bg-white rounded-lg border border-gray-200 p-4 sm:p-6 mb-6 shadow-sm">
-      <h2 className="text-xl font-bold mb-6 text-gray-800">What's on your mind?</h2>
+      <h2 className="text-xl font-bold mb-6 text-gray-800">
+        What's on your mind?
+      </h2>
 
       <form onSubmit={handleSubmit}>
         <FormField label="Title" htmlFor="title">
@@ -61,10 +71,10 @@ export function CreatePostForm() {
                 : "bg-[#7695ec] opacity-50 cursor-not-allowed text-white"
             }`}
           >
-            CREATE
+            Create
           </Button>
         </div>
       </form>
     </div>
-  )
+  );
 }
